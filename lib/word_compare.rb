@@ -33,7 +33,7 @@ class WordCompare
         is_anagram = false
       end
     end
-    p "END  isAna=#{is_anagram}  hash=#{letter_hash}"
+    p "END(#{is_anagram && letter_hash.empty?()})  isAna=#{is_anagram}  hash=#{letter_hash}"
     is_anagram & letter_hash.empty?()
   end
 end

@@ -12,4 +12,9 @@ describe 'WordCompare#anagram' do
     word_compare = WordCompare.new('start')
     expect(word_compare.anagram('tarts')).to(eq(true))
   end
+
+  it('checks anagram for capitalized words') do
+    word_compare = WordCompare.new('Antler')
+    expect(word_compare.anagram('Rental')).to(eq(true))
+  end
 end
