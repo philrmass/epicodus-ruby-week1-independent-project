@@ -6,7 +6,7 @@ class WordCompare
     letters.each do |letter|
       if @letter_hash.include?(letter)
         letter_count = @letter_hash.fetch(letter) + 1
-        @letter_hash.fetch(letter, letter_count)
+        @letter_hash[letter] = letter_count
       else
         @letter_hash.store(letter, 1)
       end
@@ -16,6 +16,7 @@ class WordCompare
   def anagram(other_word)
     is_anagram = true
     letter_hash = @letter_hash.clone
+    p "  other_word=#{other_word} hash=#{letter_hash}"
     other_letters = other_word.split('')
     other_letters.each do |other_letter|
       if letter_hash.include?(other_letter)
