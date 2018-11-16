@@ -1,21 +1,25 @@
 class WordCompare
-  def get_words(phrase)
+  def split_words(phrase)
     phrase.downcase().gsub(/[^a-z']/, ' ').split(' ')
   end
 
-  def hash_words(words)
-    letter_hash = Hash.new()
-    words.each do |word|
-      letters = word.split('')
-      letters.each do |letter|
-        if (letter != "'")
-          if letter_hash.include?(letter)
-            letter_hash[letter] = letter_hash.fetch(letter) + 1
-          else
-            letter_hash.store(letter, 1)
-          end
+  def hash_word(word, hash)
+    letters = word.split('')
+    letters.each do |letter|
+      if (letter != "'")
+        if hash.include?(letter)
+          hash[letter] = hash.fetch(letter) + 1
+        else
+          hash.store(letter, 1)
         end
       end
+    end
+  end
+
+  def words_hash(words)
+    letter_hash = Hash.new()
+    words.each do |word|
+      hash_word(word, letter_hash)
     end
     letter_hash
   end
@@ -50,11 +54,11 @@ class WordCompare
   end
 
   def anagram(phrase0, phrase1)
-    words0 = get_words(phrase0)
-    words1 = get_words(phrase1)
+    words0 = split_words(phrase0)
+    words1 = split_words(phrase1)
     if (words?(words0) & words?(words1))
-      @phrase0_hash = hash_words(words0)
-      @phrase1_hash = hash_words(words1)
+      @phrase0_hash = words_hash(words0)
+      @phrase1_hash = words_hash(words1)
       if anagram?()
         'These words are anagrams.'
       else
