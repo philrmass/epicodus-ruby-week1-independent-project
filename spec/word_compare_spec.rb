@@ -17,4 +17,9 @@ describe 'WordCompare#anagram' do
     word_compare = WordCompare.new()
     expect(word_compare.anagram('Antler', 'Rental')).to(eq('These words are anagrams.'))
   end
+
+  it('checks inputs for actual words') do
+    word_compare = WordCompare.new()
+    expect(word_compare.anagram('Trgt', 'Grtt')).to(eq('You need to input actual words!'))
+  end
 end
