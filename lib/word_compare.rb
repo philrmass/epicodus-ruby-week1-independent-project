@@ -1,12 +1,12 @@
 class WordCompare
   def split_words(phrase)
-    phrase.downcase().gsub(/[^a-z']/, ' ').split(' ')
+    phrase.downcase().gsub(/[^a-z'-]/, ' ').split(' ')
   end
 
   def hash_word(word, hash)
     letters = word.split('')
     letters.each do |letter|
-      if (letter != "'")
+      if (letter != "'") & (letter != '-')
         if hash.include?(letter)
           hash[letter] = hash.fetch(letter) + 1
         else
@@ -66,7 +66,8 @@ class WordCompare
         if mutual_keys.empty?()
           'These words have no letter matches and are antigrams.'
         else
-          'These words NOT anagrams.'
+          keys_text = mutual_keys.sort.join(', ')
+          "These words aren't anagrams but #{mutual_keys.length} letters match: #{keys_text}."
         end
       end
     else
