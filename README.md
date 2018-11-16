@@ -11,11 +11,10 @@ This project was created as an independent project for Epicodus, Ruby Course, We
 ## Setup and Installation
 
 * Clone the project from https://github.com/philrmass/word-compare.git to a local directory
-* In IRB on a terminal, create an instance and check for anagrams with:
- * >**word_compare = WordCompare.new()**
- * >**word_compare.anagram("Can't rely on it., "certainly, NOT!!")**
-* To run the tests go to the project directory in a terminal and enter:
- * >**rspec**
+* In a terminal, run the anagrams script with:
+ * > ruby anagram_script.rb
+* In a terminal, go to the project directory and run the tests with:
+ * > rspec
 
 ## Support and Contact Details
 
