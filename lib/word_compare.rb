@@ -1,21 +1,25 @@
 class WordCompare
   def initialize(word)
-    @word = word.downcase()
-    @letter_hash = Hash.new()
-    letters = @word.split('')
+    @word0_hash = hash_word(word.downcase())
+    p "INIT  hash=#{@word0_hash}"
+  end
+
+  def hash_word(word)
+    letter_hash = Hash.new()
+    letters = word.split('')
     letters.each do |letter|
-      if @letter_hash.include?(letter)
-        letter_count = @letter_hash.fetch(letter) + 1
-        @letter_hash[letter] = letter_count
+      if letter_hash.include?(letter)
+        letter_hash[letter] = letter_hash.fetch(letter) + 1
       else
-        @letter_hash.store(letter, 1)
+        letter_hash.store(letter, 1)
       end
     end
+    letter_hash
   end
 
   def anagram?(other_word)
     is_anagram = true
-    letter_hash = @letter_hash.clone
+    letter_hash = @word0_hash.clone
     p "START  other=#{other_word}  hash=#{letter_hash}"
     other_letters = other_word.downcase().split('')
     other_letters.each do |other_letter|
