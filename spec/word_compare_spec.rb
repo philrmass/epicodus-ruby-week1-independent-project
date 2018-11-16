@@ -32,4 +32,9 @@ describe 'WordCompare#anagram' do
     word_compare = WordCompare.new()
     expect(word_compare.anagram("Can't rely on it.", "certainly, NOT!!")).to(eq('These words are anagrams.'))
   end
+
+  it('checks mutual letters if not anagram') do
+    word_compare = WordCompare.new()
+    expect(word_compare.anagram('#reFactor', 'Developer!')).to(eq("These words aren't anagrams but 3 letters match: e, o, r."))
+  end
 end

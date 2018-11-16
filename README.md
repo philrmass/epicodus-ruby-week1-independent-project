@@ -4,16 +4,18 @@
 
 ## Description
 
-_This project takes a word or phrase and compares it to other words or phrases to check if they are anagrams of each other. It also can check if they are antigrams (share no characters)._
+_This project takes two words or phrases and compares them to see if they are anagrams. It disregards punctuation and spaces, and does a quick validation on the words. It also checks whether they are antigrams (they share no letters), or reports how which letters they have in common._
 
 This project was created as an independent project for Epicodus, Ruby Course, Week 1
 
 ## Setup and Installation
 
 * Clone the project from https://github.com/philrmass/word-compare.git to a local directory
-* Create a new instance with **word_compare = WordCompare.new()**
-* Check for an anagram with **word_compare.anagram('Antler', 'Rental')**
-* To test, run rpsec in the project directory
+* In IRB on a terminal, create an instance and check for anagrams with:
+ * >**word_compare = WordCompare.new()**
+ * >**word_compare.anagram("Can't rely on it., "certainly, NOT!!")**
+* To run the tests go to the project directory in a terminal and enter:
+ * >**rspec**
 
 ## Support and Contact Details
 
