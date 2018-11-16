@@ -12,6 +12,17 @@ class WordCompare
     letter_hash
   end
 
+  def mutual_hash_keys
+    mutual_keys = []
+    word0_keys = @word0_hash.keys()
+    word0_keys.each do |key|
+      if @word1_hash.include?(key)
+        mutual_keys.push(key)
+      end
+    end
+    mutual_keys
+  end
+
   def word?(word)
     (word =~ /[aeiouy]/) != nil
   end
@@ -29,7 +40,12 @@ class WordCompare
       if anagram?()
         'These words are anagrams.'
       else
-        'These words NOT anagrams.'
+        mutual_keys = mutual_hash_keys()
+        if mutual_keys.empty?()
+          'These words have no letter matches and are antigrams.'
+        else
+          'These words NOT anagrams.'
+        end
       end
     else
       'You need to input actual words!'
