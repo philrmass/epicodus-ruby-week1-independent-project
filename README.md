@@ -11,8 +11,8 @@ This project was created as an independent project for Epicodus, Ruby Course, We
 ## Setup and Installation
 
 * Clone the project from https://github.com/philrmass/word-compare.git to a local directory
-* Create a new instance with **word_compare = WordCompare.new('pat')**
-* Check for an anagram with **word_compare.anagram('tap')**
+* Create a new instance with **word_compare = WordCompare.new('Anter')**
+* Check for an anagram with **word_compare.anagram('Rental')**
 * To test, run rpsec in the word_compare directory
 
 ## Support and Contact Details

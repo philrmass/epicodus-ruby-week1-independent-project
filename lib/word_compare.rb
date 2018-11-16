@@ -1,7 +1,6 @@
 class WordCompare
   def initialize(word)
     @word0_hash = hash_word(word.downcase())
-    p "INIT  hash=#{@word0_hash}"
   end
 
   def hash_word(word)
@@ -17,32 +16,13 @@ class WordCompare
     letter_hash
   end
 
-  def anagram?(other_word)
-    is_anagram = true
-    letter_hash = @word0_hash.clone
-    p "START  other=#{other_word}  hash=#{letter_hash}"
-    other_letters = other_word.downcase().split('')
-    other_letters.each do |other_letter|
-      if letter_hash.include?(other_letter)
-        letter_count = letter_hash.fetch(other_letter)
-        if letter_count <= 1
-          letter_hash.delete(other_letter)
-          p "  DELETE #{other_letter}  hash=#{letter_hash}"
-        else
-          letter_hash[other_letter] = letter_count - 1
-          p "  DEC #{other_letter}  cnt=#{letter_count - 1}  hash=#{letter_hash}"
-        end
-      else
-        p "  MISSING #{other_letter}  hash=#{letter_hash}"
-        is_anagram = false
-      end
-    end
-    p "END(#{is_anagram && letter_hash.empty?()})  isAna=#{is_anagram}  hash=#{letter_hash}"
-    is_anagram & letter_hash.empty?()
+  def anagram?(word1)
+    word1_hash = hash_word(word1.downcase())
+    @word0_hash == word1_hash
   end
 
-  def anagram(other_word)
-    if anagram?(other_word)
+  def anagram(word1)
+    if anagram?(word1)
       'These words are anagrams.'
     else
       'These words NOT anagrams.'
