@@ -1,8 +1,4 @@
 class WordCompare
-  def initialize(word)
-    @word0_hash = hash_word(word.downcase())
-  end
-
   def hash_word(word)
     letter_hash = Hash.new()
     letters = word.split('')
@@ -16,13 +12,14 @@ class WordCompare
     letter_hash
   end
 
-  def anagram?(word1)
-    word1_hash = hash_word(word1.downcase())
-    @word0_hash == word1_hash
+  def anagram?()
+    @word0_hash == @word1_hash
   end
 
-  def anagram(word1)
-    if anagram?(word1)
+  def anagram(word0, word1)
+    @word0_hash = hash_word(word0.downcase())
+    @word1_hash = hash_word(word1.downcase())
+    if anagram?()
       'These words are anagrams.'
     else
       'These words NOT anagrams.'
