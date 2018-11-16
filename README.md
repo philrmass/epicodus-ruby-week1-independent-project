@@ -4,7 +4,7 @@
 
 ## Description
 
-_This project takes two words or phrases and compares them to see if they are anagrams. It disregards punctuation and spaces, and does a quick validation on the words. It also checks whether they are antigrams (they share no letters), or reports how which letters they have in common._
+_This project takes two words or phrases and compares them to see if they are anagrams. It disregards punctuation and spaces, and does a quick validation on the words. It also checks whether they are antigrams (they share no letters), or reports which letters they have in common._
 
 This project was created as an independent project for Epicodus, Ruby Course, Week 1
 
