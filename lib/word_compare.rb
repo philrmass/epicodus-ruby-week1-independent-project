@@ -1,17 +1,19 @@
 class WordCompare
   def get_words(phrase)
-    phrase.downcase()
+    phrase.downcase().gsub(/[^a-z']/, ' ').split(' ')
   end
 
-  def hash_words(word)
+  def hash_words(words)
     letter_hash = Hash.new()
-    letters = word.split('')
-    letters.each do |letter|
-      if (letter != "'")
-        if letter_hash.include?(letter)
-          letter_hash[letter] = letter_hash.fetch(letter) + 1
-        else
-          letter_hash.store(letter, 1)
+    words.each do |word|
+      letters = word.split('')
+      letters.each do |letter|
+        if (letter != "'")
+          if letter_hash.include?(letter)
+            letter_hash[letter] = letter_hash.fetch(letter) + 1
+          else
+            letter_hash.store(letter, 1)
+          end
         end
       end
     end
@@ -34,7 +36,13 @@ class WordCompare
   end
 
   def words?(words)
-    word?(words)
+    are_valid = true
+    words.each do |word|
+      if !word?(word)
+        are_valid = false
+      end
+    end
+    are_valid
   end
 
   def anagram?()
