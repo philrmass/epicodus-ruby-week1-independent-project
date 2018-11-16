@@ -4,14 +4,12 @@ class WordCompare
   end
 
   def hash_word(word, hash)
-    letters = word.split('')
+    letters = word.split('').reject { |l| (l == "'") | (l == '-') }
     letters.each do |letter|
-      if (letter != "'") & (letter != '-')
-        if hash.include?(letter)
-          hash[letter] = hash.fetch(letter) + 1
-        else
-          hash.store(letter, 1)
-        end
+      if hash.include?(letter)
+        hash[letter] = hash.fetch(letter) + 1
+      else
+        hash.store(letter, 1)
       end
     end
   end
