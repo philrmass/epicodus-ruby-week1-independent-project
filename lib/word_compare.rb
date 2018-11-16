@@ -17,11 +17,7 @@ class WordCompare
   end
 
   def words_hash(words)
-    letter_hash = Hash.new()
-    words.each do |word|
-      hash_word(word, letter_hash)
-    end
-    letter_hash
+    words.reduce(Hash.new()) { |hash, word| hash_word(word, hash); hash}
   end
 
   def mutual_hash_keys
