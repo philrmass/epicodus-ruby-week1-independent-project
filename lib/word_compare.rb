@@ -1,12 +1,18 @@
 class WordCompare
-  def hash_word(word)
+  def get_words(phrase)
+    phrase.downcase()
+  end
+
+  def hash_words(word)
     letter_hash = Hash.new()
     letters = word.split('')
     letters.each do |letter|
-      if letter_hash.include?(letter)
-        letter_hash[letter] = letter_hash.fetch(letter) + 1
-      else
-        letter_hash.store(letter, 1)
+      if (letter != "'")
+        if letter_hash.include?(letter)
+          letter_hash[letter] = letter_hash.fetch(letter) + 1
+        else
+          letter_hash.store(letter, 1)
+        end
       end
     end
     letter_hash
@@ -14,9 +20,9 @@ class WordCompare
 
   def mutual_hash_keys
     mutual_keys = []
-    word0_keys = @word0_hash.keys()
-    word0_keys.each do |key|
-      if @word1_hash.include?(key)
+    phrase0_keys = @phrase0_hash.keys()
+    phrase0_keys.each do |key|
+      if @phrase1_hash.include?(key)
         mutual_keys.push(key)
       end
     end
@@ -27,16 +33,20 @@ class WordCompare
     (word =~ /[aeiouy]/) != nil
   end
 
-  def anagram?()
-    @word0_hash == @word1_hash
+  def words?(words)
+    word?(words)
   end
 
-  def anagram(word0, word1)
-    word0 = word0.downcase()
-    word1 = word1.downcase()
-    if (word?(word0) & word?(word1))
-      @word0_hash = hash_word(word0)
-      @word1_hash = hash_word(word1)
+  def anagram?()
+    @phrase0_hash == @phrase1_hash
+  end
+
+  def anagram(phrase0, phrase1)
+    words0 = get_words(phrase0)
+    words1 = get_words(phrase1)
+    if (words?(words0) & words?(words1))
+      @phrase0_hash = hash_words(words0)
+      @phrase1_hash = hash_words(words1)
       if anagram?()
         'These words are anagrams.'
       else
