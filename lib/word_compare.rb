@@ -12,17 +12,27 @@ class WordCompare
     letter_hash
   end
 
+  def word?(word)
+    (word =~ /[aeiouy]/) != nil
+  end
+
   def anagram?()
     @word0_hash == @word1_hash
   end
 
   def anagram(word0, word1)
-    @word0_hash = hash_word(word0.downcase())
-    @word1_hash = hash_word(word1.downcase())
-    if anagram?()
-      'These words are anagrams.'
+    word0 = word0.downcase()
+    word1 = word1.downcase()
+    if (word?(word0) & word?(word1))
+      @word0_hash = hash_word(word0)
+      @word1_hash = hash_word(word1)
+      if anagram?()
+        'These words are anagrams.'
+      else
+        'These words NOT anagrams.'
+      end
     else
-      'These words NOT anagrams.'
+      'You need to input actual words!'
     end
   end
 end

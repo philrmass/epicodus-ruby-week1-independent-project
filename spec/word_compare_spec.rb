@@ -20,6 +20,6 @@ describe 'WordCompare#anagram' do
 
   it('checks inputs for actual words') do
     word_compare = WordCompare.new()
-    expect(word_compare.anagram('Trgt', 'Grtt')).to(eq('You need to input actual words!'))
+    expect(word_compare.anagram('Target', 'Grnstt')).to(eq('You need to input actual words!'))
   end
 end
