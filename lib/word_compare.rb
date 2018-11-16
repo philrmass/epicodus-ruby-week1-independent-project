@@ -13,7 +13,7 @@ class WordCompare
     end
   end
 
-  def anagram(other_word)
+  def anagram?(other_word)
     is_anagram = true
     letter_hash = @letter_hash.clone
     p "START  other=#{other_word}  hash=#{letter_hash}"
@@ -35,5 +35,13 @@ class WordCompare
     end
     p "END(#{is_anagram && letter_hash.empty?()})  isAna=#{is_anagram}  hash=#{letter_hash}"
     is_anagram & letter_hash.empty?()
+  end
+
+  def anagram(other_word)
+    if anagram?(other_word)
+      'These words are anagrams.'
+    else
+      'These words NOT anagrams.'
+    end
   end
 end
