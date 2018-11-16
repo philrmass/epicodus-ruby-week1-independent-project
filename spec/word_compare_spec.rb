@@ -23,8 +23,13 @@ describe 'WordCompare#anagram' do
     expect(word_compare.anagram('Target', 'Grnstt')).to(eq('You need to input actual words!'))
   end
 
-  it('checks anigram if not anagram') do
+  it('checks antigram if not anagram') do
     word_compare = WordCompare.new()
     expect(word_compare.anagram('Quick', 'Brown')).to(eq('These words have no letter matches and are antigrams.'))
+  end
+
+  it('checks anagram for phrases with valid words and punctuation') do
+    word_compare = WordCompare.new()
+    expect(word_compare.anagram("Can't rely on it.", "certainly, NOT!!")).to(eq('These words are anagrams.'))
   end
 end
