@@ -16,17 +16,18 @@ class WordCompare
   def anagram(other_word)
     is_anagram = true
     letter_hash = @letter_hash.clone
-    p "  other_word=#{other_word} hash=#{letter_hash}"
+    p "START  other=#{other_word}  hash=#{letter_hash}"
     other_letters = other_word.split('')
     other_letters.each do |other_letter|
       if letter_hash.include?(other_letter)
         letter_hash.delete(other_letter)
-        p "delete #{other_letter}"
+        p "  DELETE #{other_letter}  hash=#{letter_hash}"
       else
+        p "  MISSING #{other_letter}  hash=#{letter_hash}"
         is_anagram = false
       end
-      p "  hash = #{letter_hash}"
     end
+    p "END  isAna=#{is_anagram}  hash=#{letter_hash}"
     is_anagram & letter_hash.empty?()
   end
 end
