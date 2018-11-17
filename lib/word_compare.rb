@@ -5,17 +5,11 @@ class WordCompare
 
   def hash_word(word, hash)
     letters = word.split('').reject { |l| (l == "'") | (l == '-') }
-    letters.each do |letter|
-      if hash.include?(letter)
-        hash[letter] = hash.fetch(letter) + 1
-      else
-        hash.store(letter, 1)
-      end
-    end
+    letters.reduce(hash) { |h, l| h.include?(l) ? h[l] = h.fetch(l) + 1 : h.store(l, 1); h }
   end
 
   def words_hash(words)
-    words.reduce(Hash.new()) { |hash, word| hash_word(word, hash); hash}
+    words.reduce(Hash.new()) { |h, w| hash_word(w, h); h }
   end
 
   def mutual_hash_keys
