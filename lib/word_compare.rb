@@ -13,14 +13,7 @@ class WordCompare
   end
 
   def mutual_hash_keys
-    mutual_keys = []
-    phrase0_keys = @phrase0_hash.keys()
-    phrase0_keys.each do |key|
-      if @phrase1_hash.include?(key)
-        mutual_keys.push(key)
-      end
-    end
-    mutual_keys
+    @phrase0_hash.keys().select { |k| @phrase1_hash[k] }
   end
 
   def word?(word)
