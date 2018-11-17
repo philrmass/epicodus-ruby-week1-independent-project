@@ -21,13 +21,7 @@ class WordCompare
   end
 
   def words?(words)
-    are_valid = true
-    words.each do |word|
-      if !word?(word)
-        are_valid = false
-      end
-    end
-    are_valid
+    words.reduce(true) { |ok, w| ok & word?(w) }
   end
 
   def anagram?()
